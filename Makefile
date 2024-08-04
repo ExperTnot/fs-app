@@ -1,8 +1,10 @@
 CXX = g++
 CXXFLAGS = -std=c++17
 NAME = fs_app
-SRC = filesystem_app.cpp CommandLineParser.cpp
-HEADERS = CommandLineParser.hpp
+
+# Automatically collect all .cpp and .hpp files in the current directory
+SRC = $(wildcard *.cpp)
+HEADERS = $(wildcard *.hpp)
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -15,3 +17,5 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(NAME)
+
+.PHONY: all clean
