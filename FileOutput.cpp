@@ -35,9 +35,7 @@ void FileOutput::printCells(const std::vector<std::vector<std::string>>& input_l
 
 void FileOutput::printWords(const std::vector<std::string>& input_words) const {
     for(auto& word : input_words) {
-        if(word == "\n")
-            std::cout << std::endl;
-        else 
-            std:: cout << word << " ";
+        std:: cout << word << " ";
     }
+    std::cout << std::endl;
 }
