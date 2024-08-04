@@ -1,10 +1,7 @@
 #include <iostream>
-#include <filesystem>
 #include "CommandLineParser.hpp"
 #include "FileOutput.hpp"
 #include "FileManipulation.hpp"
-
-namespace fs = std::filesystem;
 
 int main(int argc, char* argv[]) {
     CommandLineParser parser;
@@ -18,8 +15,9 @@ int main(int argc, char* argv[]) {
     // Example usage of FileManipulation
     FileManipulation fileManip;
     std::vector<std::string> lines = fileManip.readLines(input_path);
-    fileManip.writeLines("output.txt", lines);
-    fileManip.appendLine("output.txt", "This is a new line");
+    std::string out = "output_test.txt";
+    fileManip.writeLines(out, lines);
+    fileManip.appendLine(out, "This is a new line");
 
     return 0;
 }

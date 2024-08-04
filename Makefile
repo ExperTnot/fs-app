@@ -6,6 +6,7 @@ NAME = fs_app
 SRC = $(wildcard *.cpp)
 HEADERS = $(wildcard *.hpp)
 OBJ = $(SRC:.cpp=.o)
+TEST = $(wildcard *test*)
 
 all: $(NAME)
 
@@ -16,6 +17,6 @@ $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(NAME)
+	rm -f $(OBJ) $(NAME) $(TEST)
 
 .PHONY: all clean
