@@ -2,6 +2,7 @@
 #include "CommandLineParser.hpp"
 #include "FileOutput.hpp"
 #include "FileManipulation.hpp"
+#include "FileInput.hpp"
 
 int main(int argc, char* argv[]) {
     CommandLineParser parser;
@@ -9,15 +10,13 @@ int main(int argc, char* argv[]) {
 
     auto input_path = parser.getInputPath();
 
-    FileOutput fileOutput;
-    fileOutput.printFile(input_path);
+    FileInput fileIn;
+    FileOutput fileOut;
+    FileManipulation fileMan;
 
-    // Example usage of FileManipulation
-    FileManipulation fileManip;
-    std::vector<std::string> lines = fileManip.readLines(input_path);
-    std::string out = "output_test.txt";
-    fileManip.writeLines(out, lines);
-    fileManip.appendLine(out, "This is a new line");
+    fileOut.printCells(fileMan.splitCSV(fileIn.readLines(input_path)));
+
+    fileOut.printWords(fileIn.readWords(input_path));
 
     return 0;
 }
